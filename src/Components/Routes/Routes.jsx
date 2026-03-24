@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router";
 import Layout from '../Layout/Layout';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import Home from '../Pages/Home/Home';
+import Collections from '../Pages/Collections/Collections';
 
 const Routes = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ const Routes = createBrowserRouter([
                 index:true,
                 path: '/',
                 Component:Home,
+            },
+            {
+                path: '/collections',
+                element:<Collections></Collections>
             }
         ]
     },
