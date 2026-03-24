@@ -8,9 +8,9 @@ const Navbar = () => {
 
 
     const links = (
-        <div className='flex flex-col lg:flex-row space-x-2  '>
-            <NavLink className={({ isActive }) => isActive ? "active text-green-500 font-bold" : ""} to={'/'}>Home</NavLink>
-            <NavLink className={({ isActive }) => isActive ? "active text-green-500 font-bold" : ""} to={'/collections'}>Collections</NavLink>
+        <div className='flex flex-col lg:flex-row space-x-2 items-center justify-center  '>
+            <NavLink className={({ isActive }) => isActive ? "active text-secondary outline outline-secondary font-bold  rounded-md p-2" : ""} to={'/'}>Home</NavLink>
+            <NavLink className={({ isActive }) => isActive ? "active text-secondary font-bold outline outline-secondary rounded-md p-2" : ""} to={'/collections'}>Collections</NavLink>
             
            
         </div>
@@ -65,7 +65,7 @@ const Navbar = () => {
 
 
 
-            <nav className='navbar bg-base-300 shadow-md '>
+            <nav className='navbar bg-base-300 shadow-md  px-4'>
                 <div className='navbar-start'>
                     <h1 className='text-2xl  font-bold font-news'>Dummy <span className='italic'>Museum</span></h1>
 
@@ -90,7 +90,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className='hidden lg:flex'>
-                        <Link className=' '>Submit</Link>
+                        <Link className='btn bg-accent text-base-300'>Submit</Link>
                     </div>
 
                 </div>
