@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoaderData } from 'react-router';
 import { getUnwantedIdeasId, getWantedIdeasId } from '../Utility/localStorage';
 import { Heart, TheaterIcon, ThumbsDown } from 'lucide-react';
+import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 const Dashboard = () => {
 
@@ -10,11 +11,19 @@ const Dashboard = () => {
 
     const wantedIds = getWantedIdeasId();
     const unWnatedIds = getUnwantedIdeasId();
-    
+
 
     const wantedCount = wantedIds.length;
     const unWantedcount = unWnatedIds.length;
     const totalCount = products.length;
+
+    const barData = products.sort((a, b) => b.views - a.views).slice(0, 7).map(p => {
+        const name = p.name;
+        const views = p.views;
+        return { name, views };
+    });
+    console.log(barData);
+
 
 
 
@@ -81,12 +90,31 @@ const Dashboard = () => {
                         {totalCount}
                     </div>
                 </div>
-               
+
 
             </div>
 
 
-            
+            <div className=' p-4 bg-base-200 rounded-box  overflow-auto  '>
+
+                <ResponsiveContainer height={400}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <BarChart data={barData}>
+                        <Tooltip></Tooltip>
+                        <XAxis dataKey={"name"}></XAxis>
+                        <YAxis dataKey={"views"} tickFormatter={(v) => (
+                            new Intl.NumberFormat("en-us", {
+                                notation: "compact"
+                            }).format(v)
+                        )}></YAxis>
+                        <Bar dataKey={'views'} fill='accent' radius={[4, 4, 0, 0]} 
+
+                        ></Bar>
+
+                    </BarChart>
+
+                </ResponsiveContainer>
+            </div>
 
 
 
