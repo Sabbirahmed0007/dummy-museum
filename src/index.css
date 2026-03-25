@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @plugin "daisyui"{
-    themes: silk --default;
+    themes: silk --default, dracula;
 };
 
 

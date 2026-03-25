@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {  Link, NavLink } from 'react-router';
-import { Menu } from 'lucide-react';
+import { Menu, Moon, Sun } from 'lucide-react';
 
 const Navbar = () => {
+
+    const [theme, setTheme] = useState('silk');
+
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+
+        setTheme(savedTheme);
+        document.documentElement.setAttribute('data-theme', savedTheme)
+    },[])
+
+    const toggleTheme = () => {
+        console.log('hello theme');
+        
+        const nextTheme = theme === 'dracula' ? 'silk' : 'dracula';
+        setTheme(nextTheme);
+        localStorage.setItem("theme", nextTheme)
+
+        document.documentElement.setAttribute('data-theme', nextTheme)
+
+    }
 
 
 
@@ -11,6 +32,7 @@ const Navbar = () => {
         <div className='flex flex-col lg:flex-row space-x-2 items-center justify-center  '>
             <NavLink className={({ isActive }) => isActive ? "active text-secondary outline outline-secondary font-bold  rounded-md p-2" : ""} to={'/'}>Home</NavLink>
             <NavLink className={({ isActive }) => isActive ? "active text-secondary font-bold outline outline-secondary rounded-md p-2" : ""} to={'/collections'}>Collections</NavLink>
+            <NavLink className={({ isActive }) => isActive ? "active text-secondary font-bold outline outline-secondary rounded-md p-2" : ""} to={'/dashboard'}>DashBoard</NavLink>
             
            
         </div>
@@ -78,6 +100,11 @@ const Navbar = () => {
 
                 </div>
                 <div className='navbar-end'>
+
+                    {/* theme button */}
+                    <button onClick={toggleTheme} className='btn btn-ghost text-secondary btn-circle'>
+                        {theme === 'dracula'? <Sun></Sun>:<Moon></Moon>}
+                    </button>
 
                     <div className='dropdown'>
 
