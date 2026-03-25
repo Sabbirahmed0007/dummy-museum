@@ -11,7 +11,7 @@ const Home = () => {
     
 
     return (
-        <div className=' space-y-5 mx-4 mb-6   '>
+        <div className=' space-y-5 px-6 mb-6 box-border  '>
             <Hero></Hero>
             <Products products={products}></Products>
             

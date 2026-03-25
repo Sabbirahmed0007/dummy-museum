@@ -6,6 +6,7 @@ import Home from '../Pages/Home/Home';
 import Collections from '../Pages/Collections/Collections';
 import axios from 'axios';
 import ProductPage from '../Products/ProductPage';
+import Dashboard from '../DashBoard/Dashboard';
 
 const Routes = createBrowserRouter([
     {
@@ -19,11 +20,8 @@ const Routes = createBrowserRouter([
                 Component: Home,
                 loader: async() => {
                     const res = await axios.get('/data.json');
-
-
                     // console.log(res.data);
                     return res.data;
-                    
                 }
             },
             {
@@ -31,12 +29,18 @@ const Routes = createBrowserRouter([
                 element: <ProductPage></ProductPage>,
                 loader: async({ params }) => {
                     const res = await axios.get(`/data.json`);
-                    
-                    
                     const idea = res.data.find(product =>parseInt( product.id) === parseInt( params.id));
                     // console.log(idea);
-                    
                     return idea;
+                }
+            },
+            {
+                path: '/dashboard',
+                element: <Dashboard></Dashboard>,
+                loader: async () => {
+                    const res = await axios.get('/data.json');
+                    // console.log(res.data);
+                    return res.data;
                 }
             },
             {
