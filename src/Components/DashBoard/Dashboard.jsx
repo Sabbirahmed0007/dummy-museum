@@ -117,9 +117,9 @@ const Dashboard = () => {
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 '>
 
                 {/* Bar charts */}
-                <div className=' p-4 bg-base-200 rounded-box  overflow-auto  text-secondary '>
+                <div className=' p-4 bg-base-200 rounded-box text-secondary '>
 
-                    <ResponsiveContainer height={400}>
+                    <ResponsiveContainer className={'overflow-auto'} height={400}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <BarChart data={barData}>
                             <Legend></Legend>
